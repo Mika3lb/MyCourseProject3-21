@@ -89,15 +89,59 @@ def calculations():
     tmp = (m_cl[3] + m_comm[3]) / \
         (1 - (m_r_k[3] + m_r_cy[3] + m_r_t[3] + m_r_ob[3]))
     m_0_a.append(tmp)
+    # Third approximation
+    for i in range(3):
+        tmp = 0
+        tmp = m_kr[i] / m_0[i]
+        m_r_kr.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp = 0
+        tmp = m_sh[i] / m_0[i]
+        m_r_sh.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp = 0
+        tmp = m_f[i] / m_0[i]
+        m_r_f.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp = 0
+        tmp = m_op[i] / m_0[i]
+        m_r_op.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp += m_r_kr[i]
+    tmp = tmp / 3
+    m_r_kr.append(tmp)
+    tmp = 0
+    for i in range(3):
+        tmp += m_r_sh[i]
+    tmp = tmp / 3
+    m_r_sh.append(tmp)
+    tmp = 0
+    for i in range(3):
+        tmp += m_r_f[i]
+    tmp = tmp / 3
+    m_r_f.append(tmp)
+    tmp = 0
+    for i in range(3):
+        tmp += m_r_op[i]
+    tmp = tmp / 3
+    m_r_op.append(tmp)
+    tmp = (m_cl[3] + m_comm[3]) / \
+        (1 - (m_r_kr[3] + m_r_cy[3] + m_r_t[3] +
+         m_r_ob[3] + m_r_sh[3] + m_r_f[3] + m_r_op[3]))
+    m_0_a.append(tmp)
 
 
 def output():
-    print(m_r_k)
-    print(m_r_cy)
-    print(m_r_t)
-    print(m_r_ob)
-    print(m_cl)
+    print(m_r_kr)
+    print(m_r_sh)
+    print(m_r_f)
+    print(m_r_op)
     print(m_0_a)
+    print(f"{-(((m_0_a[1]/m_0_a[2])*100)-100)}%")
 
 
 def main():
