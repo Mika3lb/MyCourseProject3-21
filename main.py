@@ -1,7 +1,8 @@
-# INPUT PARAMETRS
+# INPUT PARAMS
 # N3
 # V_kr = 930 H = 11500 I = 5000 n = 200
 # 1)Airbus A320 2)Boeing 757-200 3)Airbus A200B2 4) AB-1
+n = 200
 m_0 = [93500, 115680, 133000]
 m_comm = [22000, 45000, 45000]
 m_k = [28000, 42000, 44000]
@@ -25,7 +26,20 @@ m_r_f = []
 
 
 def calculations():
-    pass
+    tmp = 120 * n
+    m_comm.append(tmp)
+    # First approximation
+    for i in range(3):
+        tmp = 0
+        tmp = m_comm[i] / m_0[i]
+        m_r_comm.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp += m_r_comm[i]
+    tmp = tmp / 3
+    m_r_comm.append(tmp)
+    tmp = m_comm[3] / m_r_comm[3]
+    m_0.append(tmp)
 
 
 def output():
