@@ -14,6 +14,7 @@ m_kr = [7000, 12000, 13000]
 m_sh = [4000, 5000, 7000]
 m_op = [5000, 6000, 7000]
 m_f = [15000, 18000, 22000]
+m_0_a = []
 m_r_comm = []
 m_r_k = []
 m_r_cy = []
@@ -39,11 +40,64 @@ def calculations():
     tmp = tmp / 3
     m_r_comm.append(tmp)
     tmp = m_comm[3] / m_r_comm[3]
-    m_0.append(tmp)
+    m_0_a.append(tmp)
+    # Second approximation
+    for i in range(3):
+        tmp = 0
+        tmp = m_k[i] / m_0[i]
+        m_r_k.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp = 0
+        tmp = m_cy[i] / m_0[i]
+        m_r_cy.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp = 0
+        tmp = m_t[i] / m_0[i]
+        m_r_t.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp = 0
+        tmp = m_ob[i] / m_0[i]
+        m_r_ob.append(tmp)
+        tmp = 0
+    for i in range(3):
+        tmp += m_r_k[i]
+    tmp = tmp / 3
+    m_r_k.append(tmp)
+    tmp = 0
+    for i in range(3):
+        tmp += m_r_cy[i]
+    tmp = tmp / 3
+    m_r_cy.append(tmp)
+    tmp = 0
+    for i in range(3):
+        tmp += m_r_t[i]
+    tmp = tmp / 3
+    m_r_t.append(tmp)
+    tmp = 0
+    for i in range(3):
+        tmp += m_r_ob[i]
+    tmp = tmp / 3
+    m_r_ob.append(tmp)
+    tmp = 0
+    for i in range(3):
+        tmp += m_cl[i]
+    tmp = tmp / 3
+    m_cl.append(tmp)
+    tmp = (m_cl[3] + m_comm[3]) / \
+        (1 - (m_r_k[3] + m_r_cy[3] + m_r_t[3] + m_r_ob[3]))
+    m_0_a.append(tmp)
 
 
 def output():
-    pass
+    print(m_r_k)
+    print(m_r_cy)
+    print(m_r_t)
+    print(m_r_ob)
+    print(m_cl)
+    print(m_0_a)
 
 
 def main():
