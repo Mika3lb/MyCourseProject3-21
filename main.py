@@ -2,66 +2,58 @@
 # N3
 # V_kr = 930 H = 11500 I = 5000 n = 200
 # 1)Airbus A320 2)Boeing 757-200 3)Airbus A200B2 4) AB-1
-n = 200
-m_0 = [93500, 115680, 133000]
-m_comm = [22000, 45000, 45000]
-m_k = [28000, 42000, 44000]
-m_cy = [8000, 9000, 14000]
-m_t = [24000, 38000, 40000]
-m_cl = [12000, 22000, 22000]
-m_ob = [6000, 7500, 10000]
-m_kr = [7000, 12000, 13000]
-m_sh = [4000, 5000, 7000]
-m_op = [5000, 6000, 7000]
-m_f = [15000, 18000, 22000]
-m_0_a = []
-m_r_comm = []
-m_r_k = []
-m_r_cy = []
-m_r_t = []
-m_r_ob = []
-m_r_kr = []
-m_r_sh = []
-m_r_op = []
-m_r_f = []
+n = 200  # Количество пассажиров
+m_0: list[int] = [93500, 115680, 133000]  # Взлетная масса
+m_comm: list[int] = [22000, 45000, 45000]  # Масса коммерческой нагрузки
+m_k: list[int] = [28000, 42000, 44000]  # Масса конструкции
+m_cy: list[int] = [8000, 9000, 14000]  # Масса силовой установки
+m_t: list[int] = [24000, 38000, 40000]  # Масса топлива
+m_cl: list[int] = [12000, 22000, 22000]  # Масса служебной нагрузки
+m_ob: list[int] = [6000, 7500, 10000]  # Масса оборудования
+m_kr: list[int] = [7000, 12000, 13000]  # Масса крыла
+m_sh: list[int] = [4000, 5000, 7000]  # Масса шасси
+m_op: list[int] = [5000, 6000, 7000]  # Масса оперения
+m_f: list[int] = [15000, 18000, 22000]  # Масса фюзеляж
+m_0_a: list[float] = []  # Взлетная масса нашего самолета при приближениях
+m_r_comm: list[float] = []  # Относительная масса коммерческой нагрузки
+m_r_k: list[float] = []  # Относительная масса конструкции
+m_r_cy: list[float] = []  # Относительная масса силовой
+m_r_t: list[float] = []  # Относительная масса топлива
+m_r_ob: list[float] = []  # Относительная масса оборудования
+m_r_kr: list[float] = []  # Относительная масса крыла
+m_r_sh: list[float] = []  # Относительная масса шасси
+m_r_op: list[float] = []  # Относительная масса оперения
+m_r_f: list[float] = []  # Относительная масса фюзеляж
+tmp: float = 0  # Переменная для хранения временного значения
 
 
-def calculations():
-    tmp = 120 * n
-    m_comm.append(tmp)
-    # First approximation
+def getFirstApproximationFunc():
     for i in range(3):
-        tmp = 0
         tmp = m_comm[i] / m_0[i]
         m_r_comm.append(tmp)
-        tmp = 0
+    tmp = 0
     for i in range(3):
         tmp += m_r_comm[i]
     tmp = tmp / 3
     m_r_comm.append(tmp)
     tmp = m_comm[3] / m_r_comm[3]
     m_0_a.append(tmp)
-    # Second approximation
+
+
+def getSecondApproximationFunc():
     for i in range(3):
-        tmp = 0
         tmp = m_k[i] / m_0[i]
         m_r_k.append(tmp)
-        tmp = 0
     for i in range(3):
-        tmp = 0
         tmp = m_cy[i] / m_0[i]
         m_r_cy.append(tmp)
-        tmp = 0
     for i in range(3):
-        tmp = 0
         tmp = m_t[i] / m_0[i]
         m_r_t.append(tmp)
-        tmp = 0
     for i in range(3):
-        tmp = 0
         tmp = m_ob[i] / m_0[i]
         m_r_ob.append(tmp)
-        tmp = 0
+    tmp = 0
     for i in range(3):
         tmp += m_r_k[i]
     tmp = tmp / 3
@@ -89,27 +81,22 @@ def calculations():
     tmp = (m_cl[3] + m_comm[3]) / \
         (1 - (m_r_k[3] + m_r_cy[3] + m_r_t[3] + m_r_ob[3]))
     m_0_a.append(tmp)
-    # Third approximation
+
+
+def getThirdApproximationFunc():
     for i in range(3):
-        tmp = 0
         tmp = m_kr[i] / m_0[i]
         m_r_kr.append(tmp)
-        tmp = 0
     for i in range(3):
-        tmp = 0
         tmp = m_sh[i] / m_0[i]
         m_r_sh.append(tmp)
-        tmp = 0
     for i in range(3):
-        tmp = 0
         tmp = m_f[i] / m_0[i]
         m_r_f.append(tmp)
-        tmp = 0
     for i in range(3):
-        tmp = 0
         tmp = m_op[i] / m_0[i]
         m_r_op.append(tmp)
-        tmp = 0
+    tmp = 0
     for i in range(3):
         tmp += m_r_kr[i]
     tmp = tmp / 3
@@ -135,7 +122,15 @@ def calculations():
     m_0_a.append(tmp)
 
 
-def output():
+def getApproximations():
+    tmp = 120 * n
+    m_comm.append(tmp)
+    getFirstApproximationFunc()
+    getSecondApproximationFunc()
+    getThirdApproximationFunc()
+
+
+def firstApproximationOutputFunc():
     print("Первое приближение: \n")
     for i in range(3):
         print(f"m_0_{i+1} = {m_0[i]} кг", end=" | ")
@@ -151,6 +146,9 @@ def output():
         f"\nm_r_comm = ({m_r_comm[0]:.3f} + {m_r_comm[1]:.3f} + {m_r_comm[2]:.3f}) / 3 => {m_r_comm[3]:.3f}")
     print(f"\nm_0 = {m_comm[3]} кг / {m_r_comm[3]:.3f} => {int(m_0_a[0])} кг")
     print("\n----------------------------------\n")
+
+
+def secondApproximationOutputFunc():
     print("Второе приближение: \n")
     for i in range(3):
         print(f"m_comm_{i+1} = {m_comm[i]} кг", end=" | ")
@@ -196,6 +194,9 @@ def output():
     print(
         f"\nm_r_ob = ({m_r_ob[0]:.3f} + {m_r_ob[1]:.3f} + {m_r_ob[2]:.3f}) / 3 => {m_r_ob[3]:.3f}")
     print(f"\nm_0 = {int(m_cl[3])} кг + {m_r_comm[3]:.3f} кг / 1 - ({m_r_k[3]:.3f} + {m_r_cy[3]:.3f} + {m_r_t[3]:.3f} + {m_r_ob[3]:.3f}) => {int(m_0_a[1])} кг")
+
+
+def thirdApproximationOutputFunc():
     print("\n----------------------------------\n")
     print("Третье приближение: \n")
     for i in range(3):
@@ -269,14 +270,17 @@ def output():
     print(
         f"\nm_r_ob = ({m_r_ob[0]:.3f} + {m_r_ob[1]:.3f} + {m_r_ob[2]:.3f}) / 3 => {m_r_ob[3]:.3f}")
     print(f"\nm_0 = {int(m_cl[3])} кг + {m_r_comm[3]:.3f} кг / 1 - ({m_r_kr[3]:.3f} + {m_r_f[3]:.3f} + {m_r_sh[3]:.3f} + {m_r_op[3]:.3f} + {m_r_cy[3]:.3f} + {m_r_t[3]:.3f} + {m_r_ob[3]:.3f}) => {int(m_0_a[2])} кг")
+
+
+def getOutputFunc():
+    firstApproximationOutputFunc()  # Print to cmd first app-on information
+    secondApproximationOutputFunc()  # Print to cmd second app-on information
+    thirdApproximationOutputFunc()  # Print to cmd third app-on information
     print(
+        # Print to cmd error information
         f"\nПогрешность второго и третьего приблежения: {-(((m_0_a[1]/m_0_a[2])*100)-100):.2f} %")
 
 
-def main():
-    calculations()
-    output()
-
-
 if __name__ == "__main__":
-    main()
+    getApproximations()  # Start app-tioning
+    getOutputFunc()  # Print results
