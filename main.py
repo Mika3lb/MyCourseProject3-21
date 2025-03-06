@@ -284,3 +284,4 @@ def getOutputFunc():
 if __name__ == "__main__":
     getApproximations()  # Start app-tioning
     getOutputFunc()  # Print results
+# 1
