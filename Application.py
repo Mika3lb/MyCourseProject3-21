@@ -1,7 +1,7 @@
 import streamlit as st
 import main
 
-st.image("IMG\HEAD.png")
+st.image("https://github.com/Mika3lb/MyCourseProject3-21/blob/main/IMG/HEAD.png")
 tip = '''
 n - Количество пассажиров
 m_0 - Взлетная масса
