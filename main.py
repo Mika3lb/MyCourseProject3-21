@@ -132,154 +132,165 @@ def getApproximations():
 
 
 def firstApproximationOutputFunc():
-    print("Первое приближение: \n")
+    text = ''''''
+    text += str("Первое приближение: \n")
     for i in range(3):
-        print(f"m_0_{i+1} = {m_0[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_0_{i+1} = {m_0[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_comm_{i+1} = {m_comm[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_comm_{i+1} = {m_comm[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_comm_{i+1} = {m_comm[i]} кг / {m_0[i]} кг => {m_r_comm[i]:.3f}")
-    print(f"\nm_comm = 120 кг * {n} => {m_comm[3]} кг")
-    print(
+    text += str(f"\nm_comm = 120 кг * {n} => {m_comm[3]} кг")
+    text += str(
         f"\nm_r_comm = ({m_r_comm[0]:.3f} + {m_r_comm[1]:.3f} + {m_r_comm[2]:.3f}) / 3 => {m_r_comm[3]:.3f}")
-    print(f"\nm_0 = {m_comm[3]} кг / {m_r_comm[3]:.3f} => {int(m_0_a[0])} кг")
-    print("\n----------------------------------\n")
+    text += str(f"\nm_0 = {m_comm[3]} кг / {m_r_comm[3]:.3f} => {int(m_0_a[0])} кг")
+    text += str("\n----------------------------------\n")
+    return text
 
 
 def secondApproximationOutputFunc():
-    print("Второе приближение: \n")
+    text = ''''''
+    text += str("Второе приближение: \n")
     for i in range(3):
-        print(f"m_comm_{i+1} = {m_comm[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_comm_{i+1} = {m_comm[i]} кг |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_k_{i+1} = {m_k[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_k_{i+1} = {m_k[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_cy_{i+1} = {m_cy[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_cy_{i+1} = {m_cy[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_t_{i+1} = {m_t[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_t_{i+1} = {m_t[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_ob_{i+1} = {m_ob[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_ob_{i+1} = {m_ob[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_cl_{i+1} = {m_cl[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_cl_{i+1} = {m_cl[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_k_{i+1} = {m_k[i]} кг / {m_0[i]} кг => {m_r_k[i]:.3f}")
-    print("")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_cy_{i+1} = {m_cy[i]} кг / {m_0[i]} кг => {m_r_cy[i]:.3f}")
-    print("")
+    text += str("")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_t_{i+1} = {m_t[i]} кг / {m_0[i]} кг => {m_r_t[i]:.3f}")
-    print("")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_ob_{i+1} = {m_ob[i]} кг / {m_0[i]} кг => {m_r_ob[i]:.3f}")
-    print(
+    text += str(
         f"\nm_cl = {m_cl[0]} кг + {m_cl[1]} кг + {m_cl[2]} кг => {int(m_cl[3])} кг")
-    print(
+    text += str(
         f"\nm_r_k = ({m_r_k[0]:.3f} + {m_r_k[1]:.3f} + {m_r_k[2]:.3f}) / 3 => {m_r_k[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_cy = ({m_r_cy[0]:.3f} + {m_r_cy[1]:.3f} + {m_r_cy[2]:.3f}) / 3 => {m_r_cy[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_t = ({m_r_t[0]:.3f} + {m_r_t[1]:.3f} + {m_r_t[2]:.3f}) / 3 => {m_r_t[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_ob = ({m_r_ob[0]:.3f} + {m_r_ob[1]:.3f} + {m_r_ob[2]:.3f}) / 3 => {m_r_ob[3]:.3f}")
-    print(f"\nm_0 = {int(m_cl[3])} кг + {m_r_comm[3]:.3f} кг / 1 - ({m_r_k[3]:.3f} + {m_r_cy[3]:.3f} + {m_r_t[3]:.3f} + {m_r_ob[3]:.3f}) => {int(m_0_a[1])} кг")
+    text += str(f"\nm_0 = {int(m_cl[3])} кг + {m_r_comm[3]:.3f} кг / 1 - ({m_r_k[3]:.3f} + {m_r_cy[3]:.3f} + {m_r_t[3]:.3f} + {m_r_ob[3]:.3f}) => {int(m_0_a[1])} кг")
+    return text
 
 
 def thirdApproximationOutputFunc():
-    print("\n----------------------------------\n")
-    print("Третье приближение: \n")
+    text = ''''''
+    text += str("\n----------------------------------\n")
+    text += str("Третье приближение: \n")
     for i in range(3):
-        print(f"m_comm_{i+1} = {m_comm[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_comm_{i+1} = {m_comm[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_kr_{i+1} = {m_kr[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_kr_{i+1} = {m_kr[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_f_{i+1} = {m_f[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_f_{i+1} = {m_f[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_sh_{i+1} = {m_sh[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_sh_{i+1} = {m_sh[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_op_{i+1} = {m_op[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_op_{i+1} = {m_op[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_cy_{i+1} = {m_cy[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_cy_{i+1} = {m_cy[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_t_{i+1} = {m_t[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_t_{i+1} = {m_t[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_ob_{i+1} = {m_ob[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_ob_{i+1} = {m_ob[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(f"m_cl_{i+1} = {m_cl[i]} кг", end=" | ")
-    print("\n")
+        text += str(f"m_cl_{i+1} = {m_cl[i]} кг  |")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_kr_{i+1} = {m_kr[i]} кг / {m_0[i]} кг => {m_r_kr[i]:.3f}")
-    print("")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_f_{i+1} = {m_f[i]} кг / {m_0[i]} кг => {m_r_f[i]:.3f}")
-    print("")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += (
+
             f"m_r_sh_{i+1} = {m_sh[i]} кг / {m_0[i]} кг => {m_r_sh[i]:.3f}")
-    print("")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_op_{i+1} = {m_op[i]} кг / {m_0[i]} кг => {m_r_op[i]:.3f}")
-    print("")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_cy_{i+1} = {m_cy[i]} кг / {m_0[i]} кг => {m_r_cy[i]:.3f}")
-    print("")
+    text += str("\n")
     for i in range(3):
-        print(
+        text += str(
             f"m_r_t_{i+1} = {m_t[i]} кг / {m_0[i]} кг => {m_r_t[i]:.3f}")
-    print("")
+    text += str("\n")
+
     for i in range(3):
-        print(
+        text += str(
             f"m_r_ob_{i+1} = {m_ob[i]} кг / {m_0[i]} кг => {m_r_ob[i]:.3f}")
-    print(
+    text += str(
         f"\nm_cl = {m_cl[0]} кг + {m_cl[1]} кг + {m_cl[2]} кг => {int(m_cl[3])} кг")
-    print(
+    text += str(
         f"\nm_r_kr = ({m_r_kr[0]:.3f} + {m_r_kr[1]:.3f} + {m_r_kr[2]:.3f}) / 3 => {m_r_kr[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_f = ({m_r_f[0]:.3f} + {m_r_f[1]:.3f} + {m_r_f[2]:.3f}) / 3 => {m_r_f[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_sh = ({m_r_sh[0]:.3f} + {m_r_sh[1]:.3f} + {m_r_sh[2]:.3f}) / 3 => {m_r_sh[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_op = ({m_r_op[0]:.3f} + {m_r_op[1]:.3f} + {m_r_op[2]:.3f}) / 3 => {m_r_op[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_cy = ({m_r_cy[0]:.3f} + {m_r_cy[1]:.3f} + {m_r_cy[2]:.3f}) / 3 => {m_r_cy[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_t = ({m_r_t[0]:.3f} + {m_r_t[1]:.3f} + {m_r_t[2]:.3f}) / 3 => {m_r_t[3]:.3f}")
-    print(
+    text += str(
         f"\nm_r_ob = ({m_r_ob[0]:.3f} + {m_r_ob[1]:.3f} + {m_r_ob[2]:.3f}) / 3 => {m_r_ob[3]:.3f}")
-    print(f"\nm_0 = {int(m_cl[3])} кг + {m_r_comm[3]:.3f} кг / 1 - ({m_r_kr[3]:.3f} + {m_r_f[3]:.3f} + {m_r_sh[3]:.3f} + {m_r_op[3]:.3f} + {m_r_cy[3]:.3f} + {m_r_t[3]:.3f} + {m_r_ob[3]:.3f}) => {int(m_0_a[2])} кг")
+    text += str(f"\nm_0 = {int(m_cl[3])} кг + {m_r_comm[3]:.3f} кг / 1 - ({m_r_kr[3]:.3f} + {m_r_f[3]:.3f} + {m_r_sh[3]:.3f} + {m_r_op[3]:.3f} + {m_r_cy[3]:.3f} + {m_r_t[3]:.3f} + {m_r_ob[3]:.3f}) => {int(m_0_a[2])} кг")
+    return text
 
 
 def getOutputFunc():
-    firstApproximationOutputFunc()  # Print to cmd first app-on information
-    secondApproximationOutputFunc()  # Print to cmd second app-on information
-    thirdApproximationOutputFunc()  # Print to cmd third app-on information
-    print(
+    text: str = ''''''
+    text += firstApproximationOutputFunc()  # Print to cmd first app-on information
+    # Print to cmd second app-on information
+    text += secondApproximationOutputFunc()
+    text += thirdApproximationOutputFunc()  # Print to cmd third app-on information
+    text += str(
         # Print to cmd error information
         f"\nПогрешность второго и третьего приблежения: {-(((m_0_a[1]/m_0_a[2])*100)-100):.2f} %")
+    # print(text)
 
 
 if __name__ == "__main__":
