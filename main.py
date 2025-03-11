@@ -25,6 +25,7 @@ m_r_sh: list[float] = []  # Относительная масса шасси
 m_r_op: list[float] = []  # Относительная масса оперения
 m_r_f: list[float] = []  # Относительная масса фюзеляж
 tmp: float = 0  # Переменная для хранения временного значения
+text = ""
 
 
 def getFirstApproximationFunc():
