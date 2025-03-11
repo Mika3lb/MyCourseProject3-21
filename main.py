@@ -25,7 +25,6 @@ m_r_sh: list[float] = []  # Относительная масса шасси
 m_r_op: list[float] = []  # Относительная масса оперения
 m_r_f: list[float] = []  # Относительная масса фюзеляж
 tmp: float = 0  # Переменная для хранения временного значения
-text = ""
 
 
 def getFirstApproximationFunc():
@@ -291,6 +290,7 @@ def getOutputFunc():
         # Print to cmd error information
         f"\nПогрешность второго и третьего приблежения: {-(((m_0_a[1]/m_0_a[2])*100)-100):.2f} %")
     # print(text)
+    return text
 
 
 if __name__ == "__main__":
