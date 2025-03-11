@@ -1,6 +1,7 @@
 import streamlit as st
 import main
 
+st.image("IMG\HEAD.png")
 tip = '''
 n - Количество пассажиров
 m_0 - Взлетная масса
